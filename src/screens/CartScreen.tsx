@@ -57,7 +57,7 @@ const CartScreen = () => {
       />
       <View style={styles.summary}>
         <Text style={styles.totalText}>Total: ${calculateTotalPrice()}</Text>
-        <TouchableOpacity onPress={() => log.info('Implement checkout logic')}>
+        <TouchableOpacity onPress={() => log.warn('Implement checkout logic')}>
           <Text style={styles.checkoutButton}>Checkout</Text>
         </TouchableOpacity>
       </View>

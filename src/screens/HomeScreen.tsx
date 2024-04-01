@@ -6,6 +6,7 @@ import { addToCart } from '../redux/counterReducer';
 import { RootState } from '../redux/store';
 import fetchPokemonData from '../components/fetchPokeData';
 import { logger } from 'react-native-logs';
+import { useFocusEffect } from '@react-navigation/native';
 
 // Define navigation parameters
 type RootStackParamList = {
@@ -50,6 +51,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }): JSX.Element => {
     const data = await fetchPokemonData(10, (page - 1) * 10);
     setPokemonData(data);
     setLoading(false);
+    // Scroll to the top of the list when navigating to a new page
+    flatListRef.current?.scrollToOffset({ animated: true, offset: 0 });
   }, [page]);
 
   // Function to preload next page data
@@ -58,6 +61,9 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }): JSX.Element => {
     const data = await fetchPokemonData(10, nextPage * 10);
     setNextPageData(data);
   }, [page]);
+
+  // Scroll to the top of the list when navigating to a new page
+
 
   // Memoized Pokemon item component
   const MemorizedPokemonItem = React.memo(({ item }: { item: any }) => (
@@ -80,6 +86,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }): JSX.Element => {
 
   // Number of columns in FlatList
   const numColumns = 2;
+
 
   return (
     <SafeAreaView style={styles.container}>

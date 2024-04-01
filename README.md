@@ -89,3 +89,19 @@
 1. Once the app is successfully built and launched, you can interact with it on the Android emulator.
 
 2. Explore the features of the PokeMon app, such as viewing and adding Pokemon to the cart.
+
+### Step 7: Completed Stories
+
+1. **Setup and Configuration (Story 1)**: Setting up the React Native project, installing necessary dependencies like Redux and Redux Toolkit, and creating an initial README file with setup instructions.
+   
+2. **Explore Pokémon (Story 2)**: Fetching Pokémon data from the PokeAPI, displaying Pokémon in a grid layout with names and icons, ensuring the menu is scrollable, and adding code comments for better understanding.
+
+3. **Manage Cart (Story 3)**: Implementing functionality to add Pokémon to the cart, adjust quantities, remove items, and provide a summary view of the cart with selected Pokémon details.
+
+4. **Dynamic Pricing Based on Weight (Bonus Story)**: Calculating the cost of Pokémon in the cart based on their weight attribute fetched from the PokeAPI, and updating the cart's total cost dynamically as items are added, removed, or quantities are changed.
+
+5. **Optimize Performance and User Experience (Bonus Story)**: Implementing efficient data fetching and caching strategies, utilizing memoization and optimizing re-renders for better performance, and designing a user-friendly and responsive interface.
+
+6. **Show the Ability to Log (Bonus Story)**: Implementing comprehensive logging throughout the application, including logging API calls, user actions, and error handling, using a logging library.
+
+7. **Tests**: Had Set up a testing framework Jest for the React Native application.

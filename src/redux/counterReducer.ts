@@ -1,4 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { logger } from 'react-native-logs';
+
+// Create a logger instance
+const log = logger.createLogger();
 
 // Define the shape of a cart item
 export interface CartItem {
@@ -32,13 +36,21 @@ export const cartSlice = createSlice({
       // If item exists, increase its quantity; otherwise, add it to the cart
       if (existingItem) {
         existingItem.quantity += 1;
+        log.info(`Quantity increased for ${name}: ${existingItem.quantity}`);
       } else {
         state.cartItems.push({ icon, name, weight, quantity: 1, price: 0.5 });
+        log.info(`Added new item to cart: ${name}`);
       }
     },
     removeFromCart(state, action: PayloadAction<number>) {
       // Remove item from cart based on index
-      state.cartItems = state.cartItems.filter((item, index) => index !== action.payload);
+      state.cartItems = state.cartItems.filter((item, index) => {
+        if (index !== action.payload) {
+          log.info(`Item removed from cart: ${item.name}`);
+          return true;
+        }
+        return false;
+      });
     },
     increaseQuantity(state, action: PayloadAction<string>) {
       // Increase quantity of a specific item in the cart
@@ -46,6 +58,7 @@ export const cartSlice = createSlice({
       const itemToIncrease = state.cartItems.find(item => item.name === itemName);
       if (itemToIncrease) {
         itemToIncrease.quantity += 1;
+        log.info(`Quantity increased for ${itemName}: ${itemToIncrease.quantity}`);
       }
     },
     decreaseQuantity(state, action: PayloadAction<string>) {
@@ -54,6 +67,7 @@ export const cartSlice = createSlice({
       const itemToDecrease = state.cartItems.find(item => item.name === itemName);
       if (itemToDecrease && itemToDecrease.quantity > 0) {
         itemToDecrease.quantity -= 1;
+        log.info(`Quantity decreased for ${itemName}: ${itemToDecrease.quantity}`);
       }
     },
   },
