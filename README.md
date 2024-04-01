@@ -1,79 +1,91 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
-
 # Getting Started
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-## Step 1: Start the Metro Server
+### Step 1: Clone the Repository
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+1. Open a terminal window.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+2. Navigate to the directory where you want to store the PokeMon app.
 
-```bash
-# using npm
-npm start
+3. Run the following command to clone the repository:
 
-# OR using Yarn
-yarn start
-```
+   ```bash
+   git clone https://github.com/amartejak/pokemonstore.git
+   ```
 
-## Step 2: Start your Application
+### Step 2: Navigate to the Project Directory
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+1. After cloning the repository, navigate to the project directory:
 
-### For Android
+   ```bash
+   cd pokemonstore
+   ```
 
-```bash
-# using npm
-npm run android
+### Step 3: Install Dependencies
 
-# OR using Yarn
-yarn android
-```
+1. Once inside the project directory, install the necessary dependencies. Run one of the following commands based on your package manager preference:
 
-### For iOS
+   Using npm:
 
-```bash
-# using npm
-npm run ios
+   ```bash
+   npm install
+   ```
 
-# OR using Yarn
-yarn ios
-```
+   Using Yarn:
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+   ```bash
+   yarn install
+   ```
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### Step 4: Set Up Android Studio and Emulator
 
-## Step 3: Modifying your App
+1. Download and install [Android Studio](https://developer.android.com/studio) if you haven't already.
 
-Now that you have successfully run the app, let's modify it.
+2. Open Android Studio and follow the setup instructions to complete the installation.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+3. Once Android Studio is installed, open the AVD Manager (Android Virtual Device Manager) to create an Android emulator.
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+4. Create a new virtual device by selecting a device definition and configuring the emulator settings.
 
-## Congratulations! :tada:
+### Step 5: Start Metro Server
 
-You've successfully run and modified your React Native App. :partying_face:
+1. To start the Metro server, run the following command:
 
-### Now what?
+   ```bash
+   npm start
+   ```
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+   or
 
-# Troubleshooting
+   ```bash
+   yarn start
+   ```
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+   This command will start the Metro Bundler, which bundles your JavaScript code.
 
-# Learn More
+### Step 6: Start the Application
 
-To learn more about React Native, take a look at the following resources:
+1. Keep the Metro Bundler running in its own terminal window.
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+2. Open a new terminal window and navigate to the PokeMon project directory if you're not already there.
+
+3. To start the PokeMon app on the Android emulator, run the following command:
+
+   ```bash
+   npm run android
+   ```
+
+   or
+
+   ```bash
+   yarn android
+   ```
+
+   This command will build the app and launch it on the Android emulator.
+
+### Step 7: Interact with the App
+
+1. Once the app is successfully built and launched, you can interact with it on the Android emulator.
+
+2. Explore the features of the PokeMon app, such as viewing and adding Pokemon to the cart.
