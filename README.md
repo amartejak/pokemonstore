@@ -82,7 +82,7 @@
    yarn android
    ```
 
-   This command will build the app and launch it on the Android emulator.
+   This command will build the app and launch it on the Android emulator or if not launched open the emulater manually.
 
 ### Step 7: Interact with the App
 
