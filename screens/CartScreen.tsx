@@ -3,21 +3,20 @@ import { View, Text, Button, FlatList, StyleSheet, Image, TouchableOpacity } fro
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { removeFromCart, increaseQuantity, decreaseQuantity } from '../redux/counterReducer';
+import { logger } from 'react-native-logs'; // Import Logger from react-native-log
 
-/**
- * Component representing the cart screen.
- * Renders the items added to the cart, provides options to remove items and adjust their quantities, and displays the total price.
- */
+const log = logger.createLogger(); // Create a logger instance
+
 const CartScreen = () => {
-  // Selecting cart items from Redux store
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const dispatch = useDispatch();
 
-  // Function to remove an item from the cart
+  // Function to remove an item from the cart and log the action
   const removeItemFromCart = (itemName: string) => {
     const itemIndex = cartItems.findIndex(item => item.name === itemName);
     if (itemIndex !== -1) {
       dispatch(removeFromCart(itemIndex));
+      log.info(`Removed ${itemName} from cart`); // Log when item is removed from cart
     }
   };
 
@@ -50,23 +49,23 @@ const CartScreen = () => {
 
   return (
     <View style={styles.container}>
-      {/* FlatList to render cart items */}
       <FlatList
         data={cartItems}
         renderItem={renderItem}
         keyExtractor={item => item.name.toString()}
         contentContainerStyle={styles.listContainer}
       />
-      {/* Summary section displaying total price and checkout button */}
       <View style={styles.summary}>
         <Text style={styles.totalText}>Total: ${calculateTotalPrice()}</Text>
-        <Button title="Checkout" onPress={() => console.log('Implement checkout logic')} color="#32cd32" />
+        <TouchableOpacity onPress={() => log.info('Implement checkout logic')}>
+          <Text style={styles.checkoutButton}>Checkout</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-// Styles for the CartScreen component
+// Styles for the components
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -147,7 +146,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: 'silver',
+    marginLeft: 5,
   },
+  checkoutButton:{
+    marginRight: 5,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: 'silver',
+    backgroundColor: 'black',
+    color: 'silver',
+  }
 });
 
 export default CartScreen;

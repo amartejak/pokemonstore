@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 // Define the type for your route parameters
 type RootStackParamList = {
   Home: undefined;
-  Cart: undefined; // Specify cartItems as parameter for Cart screen
+  Cart: undefined; 
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

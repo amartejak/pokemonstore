@@ -2,11 +2,12 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, useColorScheme, View, Image, TouchableOpacity, FlatList, Text, ActivityIndicator } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from '../redux/counterReducer'; // Importing addToCart action
+import { addToCart } from '../redux/counterReducer';
 import { RootState } from '../redux/store';
-import fetchPokemonData from '../components/fetchPokeData'; // Importing the function to fetch Pokemon data
+import fetchPokemonData from '../components/fetchPokeData';
+import { logger } from 'react-native-logs';
 
-// Define types for navigation parameters
+// Define navigation parameters
 type RootStackParamList = {
   Home: undefined;
   Cart: undefined;
@@ -17,7 +18,6 @@ type HomeScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'Home'>;
 };
 
-// Define the HomeScreen component
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }): JSX.Element => {
   // Dark mode check
   const isDarkMode = useColorScheme() === 'dark';
@@ -28,12 +28,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }): JSX.Element => {
   const [page, setPage] = useState(1);
   const [nextPageData, setNextPageData] = useState<any[]>([]);
 
+  // Reference to FlatList
+  const flatListRef = useRef<FlatList<any> | null>(null);
+
   // Redux hooks
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
 
-  // Reference to FlatList
-  const flatListRef = useRef<FlatList<any> | null>(null);
+  // Logger instance
+  const log = logger.createLogger();
 
   // Fetch data and preload next page when page changes
   useEffect(() => {
@@ -66,8 +69,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }): JSX.Element => {
       <TouchableOpacity
         style={styles.addToCartButton}
         onPress={() => {
-          dispatch(addToCart({ icon: item.icon, name: item.name, weight: item.weight}));
-          console.log("you added :", item.name,item.weight);
+          dispatch(addToCart({ icon: item.icon, name: item.name, weight: item.weight }));
+          log.info(`Added ${item.name} to cart`);// log info
         }}
       >
         <Text style={styles.addToCartButtonText}>Add to Cart</Text>
@@ -91,8 +94,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }): JSX.Element => {
         keyExtractor={(item, index) => index.toString()}
         numColumns={numColumns}
         contentContainerStyle={styles.gridContainer}
-        // onEndReached={() => setPage(prevPage => prevPage + 1)}
-        // onEndReachedThreshold={0.1}
       />
       <View style={styles.footer}>
         <TouchableOpacity
@@ -166,7 +167,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderRadius: 5,
     overflow: 'hidden',
-    color: 'grey' 
+    color: 'grey',
   },
   pokemonImage: {
     width: '100%',
@@ -220,4 +221,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen
+export default HomeScreen;
