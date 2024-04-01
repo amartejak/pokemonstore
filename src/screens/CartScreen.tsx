@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Button, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from './redux/store';
-import { removeFromCart, increaseQuantity, decreaseQuantity } from './redux/counterReducer';
+import { RootState } from '../redux/store';
+import { removeFromCart, increaseQuantity, decreaseQuantity } from '../redux/counterReducer';
 import { logger } from 'react-native-logs'; // Import Logger from react-native-log
 
 const log = logger.createLogger(); // Create a logger instance

@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/HomeScreen';
 import CartScreen from './src/screens/CartScreen';
-import { store } from './src/screens/redux/store';
+import { store } from './src/redux/store';
 import { Provider } from 'react-redux'
 
 // Define the type for your route parameters

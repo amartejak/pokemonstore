@@ -2,9 +2,9 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, useColorScheme, View, Image, TouchableOpacity, FlatList, Text, ActivityIndicator } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from './redux/counterReducer';
-import { RootState } from './redux/store';
-import fetchPokemonData from './components/fetchPokeData';
+import { addToCart } from '../redux/counterReducer';
+import { RootState } from '../redux/store';
+import fetchPokemonData from '../components/fetchPokeData';
 import { logger } from 'react-native-logs';
 
 // Define navigation parameters
