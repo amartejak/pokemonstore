@@ -79,6 +79,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface CartItem {
   icon: string;
   name: string;
+  weight: number;
   quantity: number;
   price: number;
 }
@@ -95,13 +96,13 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart(state, action: PayloadAction<{ icon: string; name: string }>) {
-      const { icon, name } = action.payload;
+    addToCart(state, action: PayloadAction<{ icon: string; name: string; weight:number }>) {
+      const { icon, name, weight } = action.payload;
       const existingItem = state.cartItems.find(item => item.name === name);
       if (existingItem) {
         existingItem.quantity += 1; // Increase quantity if item already exists
       } else {
-        state.cartItems.push({ icon, name, quantity: 1, price: 0 }); // Add new item to cart
+        state.cartItems.push({ icon, name, weight, quantity: 1, price: 0.5 }); // Add new item to cart
       }
     },
     removeFromCart(state, action: PayloadAction<number>) {

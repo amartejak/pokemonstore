@@ -18,9 +18,34 @@ function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home'>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Cart" component={CartScreen} />
+        <Stack.Navigator initialRouteName='Home' 
+         screenOptions={{
+          headerStyle: {
+            backgroundColor: '#393232', // Change the color of the header bar here
+          },
+          headerTitleAlign: 'center', // Align the header title to the center
+          headerTintColor: 'white', // Change the color of the header title here
+        }}
+        >
+          <Stack.Screen name="Home" component={HomeScreen} 
+          
+          options={{ 
+            title: 'Poke Store',
+            headerTitleStyle: {
+              color: 'white',
+              fontFamily: 'Roboto' // Change the color here
+            },
+          }}
+          
+          />
+          <Stack.Screen name="Cart" component={CartScreen} 
+          options={{ 
+            title: 'Cart Summary',
+            headerTitleStyle: {
+              color: 'white', // Change the color here
+            },
+          }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
