@@ -90,7 +90,7 @@
 
 2. Explore the features of the PokeMon app, such as viewing and adding Pokemon to the cart.
 
-### Step 7: Completed Stories
+### Completed Stories
 
 1. **Setup and Configuration (Story 1)**: Setting up the React Native project, installing necessary dependencies like Redux and Redux Toolkit, and creating an initial README file with setup instructions.
    
@@ -105,3 +105,7 @@
 6. **Show the Ability to Log (Bonus Story)**: Implementing comprehensive logging throughout the application, including logging API calls, user actions, and error handling, using a logging library.
 
 7. **Tests**: Had Set up a testing framework Jest for the React Native application.
+
+### Demo Video
+
+You can find the demo video: https://drive.google.com/file/d/1w2ayC0fql0zAMGg3dWXYiTsiqOyujY2p/view?usp=drive_link
